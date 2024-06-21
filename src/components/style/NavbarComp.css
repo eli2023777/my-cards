@@ -1,0 +1,92 @@
+.header {
+    /* border-top: #00632d 5px solid; */
+    border-bottom: #006d31 5px solid;
+    border-radius: 0 0 10px 10px;
+    /* width: 110%; */
+    box-shadow: #919191 0 0 2px 2px;
+    z-index: 1;
+}
+
+.upNavbar {
+    position: fixed;
+    top: 105px;
+    /* right: 210px; */
+    z-index: 2;
+}
+
+.dowunNavbar {
+    z-index: 2;
+    position: fixed;
+    top: 20px;
+}
+
+.upNavbar:hover {
+    height: 30px;
+}
+
+.link {
+    margin: auto;
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: #000000;
+}
+
+.darkLink {
+    margin: auto;
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.link:hover {
+    font-size: 1.5rem;
+}
+
+.search {
+    gap: 0;
+}
+
+.searchIcon {
+    width: 15px;
+}
+
+
+.darkBtn:hover {
+    width: 17px;
+}
+
+.footer {
+    position: sticky;
+    bottom: 0;
+    border-top: #006d31 2px solid;
+    box-shadow: #919191 1px 2px 2px 2px;
+    border-radius: 10px 10px 0 0;
+}
+
+
+.lightBtn:hover {
+    width: 25px;
+}
+
+.logoImg {
+    width: 100px;
+}
+
+.logoImg:hover {
+    width: 105px;
+}
+
+.profileImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.profileImg:hover {
+    box-shadow: 1px 1px 1px 1px;
+}
+
+/* delete the arrow icon on dropdown */
+.no-arrow-dropdown .dropdown-toggle::after {
+    display: none !important;
+}

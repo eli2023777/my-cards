@@ -1,0 +1,51 @@
+P {
+    font-size: 1.3rem;
+}
+
+.cardsGrid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+}
+
+/* .unHoveredCard {
+    height: 200px;
+} */
+
+.imgCard {
+    height: 200px;
+}
+
+.unHoveredCard .bodyCard {
+    box-shadow: 0 2px 2px #006d31;
+}
+
+.hoveredCard {
+    background-color: #360a8e29;
+    /* background-color: rgba(0, 0, 0, 0.183); */
+    cursor: pointer;
+}
+
+.hoveredCard .bodyCard {
+    /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.511); */
+    /* box-shadow: 0 8px 16px #490eb7; */
+    box-shadow: 0 8px 16px #006d31;
+}
+
+
+.deleteIcon:hover {
+    width: 20px;
+}
+
+.editIcon:hover {
+    width: 25px;
+    color: #e20000;
+}
+
+@media screen and (max-width: 600px) {
+    .cardsGrid {
+        grid-template-columns: auto;
+        gap: 10px;
+        margin-left: 8%;
+    }
+}

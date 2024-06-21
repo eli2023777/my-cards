@@ -1,0 +1,23 @@
+form {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 30px;
+}
+
+Button {
+    cursor: pointer;
+}
+
+.successMessage {
+    font-size: 1.2rem;
+    color: green;
+    position: fixed;
+    z-index: 2;
+    top: 300px;
+    right: 200px;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 1.2rem;
+}
