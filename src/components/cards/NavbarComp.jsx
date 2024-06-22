@@ -181,7 +181,7 @@ const NavbarComp = ({ toggleDarkMode }) => {
 
     return (
         <div>
-           <HashRouter>
+            <HashRouter basename={process.env.PUBLIC_URL}>
                 {isVisibleNav &&
                     ['md'].map((expand) => (
                         <Navbar key={expand} expand={expand} sticky="top" className="bg-body-tertiary mb-3 header"
@@ -364,7 +364,7 @@ const NavbarComp = ({ toggleDarkMode }) => {
                         </Nav.Link>
                     </Nav.Item>
                 </Nav>
-</HashRouter>
+            </HashRouter>
         </div >
     )
 }
