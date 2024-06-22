@@ -6,7 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { HashRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import LogIn from '../auth/LogIn';
 import SignUp from '../auth/SignUp';
 import CardsPage from './CardsPage';
@@ -181,7 +181,7 @@ const NavbarComp = ({ toggleDarkMode }) => {
 
     return (
         <div>
-            <HashRouter basename={process.env.PUBLIC_URL}>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
                 {isVisibleNav &&
                     ['md'].map((expand) => (
                         <Navbar key={expand} expand={expand} sticky="top" className="bg-body-tertiary mb-3 header"
@@ -364,7 +364,7 @@ const NavbarComp = ({ toggleDarkMode }) => {
                         </Nav.Link>
                     </Nav.Item>
                 </Nav>
-            </HashRouter>
+            </BrowserRouter>
         </div >
     )
 }
