@@ -17,6 +17,7 @@ const CardView = ({ id, callback, fromMainPage }) => {
     const API = useContext(APIContext);
     const [url, setURL] = useState('');
     const [alt, setALT] = useState('');
+    const apiKey = process.env.REACT_APP_GOOGLE_API_KEY;
 
     const handelEdit = () => {
         setSelectedCard(data);
@@ -165,7 +166,7 @@ const CardView = ({ id, callback, fromMainPage }) => {
                             loading="lazy"
                             allowfullscreen
                             referrerpolicy="no-referrer-when-downgrade"
-                            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyD5tP7EXDwb9u7VO5KEiX8dFIc5z2bEAAQ
+                            src={`https://www.google.com/maps/embed/v1/place?key=${apiKey}
     &q=${data.address && data.address.houseNumber}+${data.address && data.address.street}+${data.address && data.address.city}+${data.address && data.address.country}+${data.address && data.address.state}`}>
                         </iframe>
                     </div>
