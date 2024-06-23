@@ -344,7 +344,7 @@ const NavbarComp = ({ toggleDarkMode }) => {
                     {/* Fav Cards */}
                     {isLoginMode &&
                         <Nav.Item>
-                            <Nav.Link href='/favCards'
+                            <Nav.Link to='/favCards'
                                 onClick={() =>
                                     setUIFooterState(UI_ICONS_FOOTER_STATE.LIKE)
                                 } >
@@ -357,7 +357,7 @@ const NavbarComp = ({ toggleDarkMode }) => {
 
                     {/* About */}
                     <Nav.Item >
-                        <Nav.Link href='/about'
+                        <Nav.Link to='/about'
                             onClick={() =>
                                 setUIFooterState(UI_ICONS_FOOTER_STATE.ABOUT)
                             }>
