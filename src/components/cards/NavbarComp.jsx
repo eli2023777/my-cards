@@ -179,9 +179,12 @@ const NavbarComp = ({ toggleDarkMode }) => {
 
     if (isLoading) return <div>Loading...</div>
 
+    const basename = process.env.REACT_APP_BASENAME;
+
+
     return (
         <div>
-            <BrowserRouter>
+            <BrowserRouter basename={basename}>
                 {isVisibleNav &&
                     ['md'].map((expand) => (
                         <Navbar key={expand} expand={expand} sticky="top" className="bg-body-tertiary mb-3 header"

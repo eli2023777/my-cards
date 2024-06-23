@@ -9,11 +9,6 @@ import './auth/signUp.css';
 
 const EditUserProphile = () => {
 
-    // const UI_ACTION = {
-    //     GET_ONE: 'GET_ONE',
-    //     UPDATE: 'UPDATE',
-    // }
-    // const [uiAction, setUIAction] = useState(UI_ACTION.GET_ONE);
 
     const [data, setData] = useState({});
     const token = localStorage.getItem('token');
@@ -27,10 +22,6 @@ const EditUserProphile = () => {
     const [errors, setErrors] = useState({}); // errors is a JS object, with the key = field name, and value = error message
 
     const handelChange = (e) => {
-        // const currUser = new FullUser(user.firstName, user.lastName, user.phone, user.email, user.url, user.alt, user.state, user.country, user.city, user.street, user.houseNumber, user.zip);
-        // currUser.updateField(e.target.name, e.target.value);
-        // setUser((user) => ({ ...user, currUser }));
-        // // setIsChange(true);
 
         // Prevent deletion of old user information that has not been re-updated by the user
         const { name, value } = e.target;
