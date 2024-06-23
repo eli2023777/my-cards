@@ -2,19 +2,18 @@ import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
-import FullUser from '../models/FullUser';
+import FullUserForUpdate from '../models/FullUserForUpdate'
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
 import './auth/signUp.css';
 
 const EditUserProphile = () => {
 
-
     const [data, setData] = useState({});
     const token = localStorage.getItem('token');
     const decodedToken = jwtDecode(token);
     const userID = decodedToken._id;
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(new FullUserForUpdate());
     // const [isChange, setIsChange] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const navigate = useNavigate();
@@ -34,21 +33,27 @@ const EditUserProphile = () => {
     const handelSubmit = (e) => {
         e.preventDefault();
 
+        // debugger;
+
         const lclErrors = user.validate();
 
         // 1. Check if form is valid?
-        // if (Object.keys(lclErrors).length === 0) {
-        // Delete errors
-        setErrors({});
+        if (Object.keys(lclErrors).length === 0) {
+            // Delete errors
+            setErrors({});
 
-        // 2. Success
-        setMesssage('You have successfully registered');
-        onEditUser();
-        // } else {
-        //     // 3. Fail
-        //     setMesssage('Invalid form values');
-        //     setErrors(lclErrors);
-        // }
+            // 2. Success
+            setMesssage('You user information has been successfully updated!');
+            setIsSuccess(true);
+
+            onEditUser();
+        } else {
+            // 3. Fail
+            setMesssage('Invalid form values. Please try again.');
+            setIsSuccess(false);
+
+            setErrors(lclErrors);
+        }
     };
 
     const onEditUser = async () => {
@@ -104,16 +109,12 @@ const EditUserProphile = () => {
         getUserDetails();
     }, []);
 
-    // useEffect(() => {
-    //     if (isChange)
-    //         setUser(data)
-    // }, [isChange]);
 
     // GET-ONE MODE
     useEffect(() => {
         if (data) {
             if (data.name && data.image && data.address) {
-                const newUser = new FullUser(data._id, data.name.first, data.name.last, data.phone, null, null, data.image.url, data.image.alt, data.address.state, data.address.country, data.address.city, data.address.street, data.address.houseNumber, data.address.zip);
+                const newUser = new FullUserForUpdate(data._id, data.name.first, data.name.last, data.phone, data.image.url, data.image.alt, data.address.state, data.address.country, data.address.city, data.address.street, data.address.houseNumber, data.address.zip);
                 setUser(newUser);
             }
         }
@@ -122,7 +123,8 @@ const EditUserProphile = () => {
 
     useEffect(() => {
         if (errors)
-            console.log('Errors:', errors);
+            // setErrors(errors);
+            console.log(errors);
     }, [errors]);
 
     useEffect(() => {
@@ -220,10 +222,10 @@ const EditUserProphile = () => {
                     Submit
                 </Button>
 
-                <div>{message}</div>
-
             </Form>
             <br />
+            <div style={{ color: isSuccess ? 'green' : 'red' }}>{message}</div>
+
             <br />
             <br />
             <br />

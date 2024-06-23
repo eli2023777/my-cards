@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavbarComp from './components/cards/NavbarComp';
 import APIContext from './contexts/APIContext';
@@ -7,21 +7,28 @@ import './App.css';
 import { Container } from 'react-bootstrap';
 
 
-
-
-
-
 function App() {
 
+  // Check if it's Dark by using localStorage
+  const getInitialDarkMode = () => {
+    const savedMode = localStorage.getItem('isDark');
+    // convert string to boolean
+    console.log(savedMode);
+
+    return savedMode === 'true';
+  };
+
   // All page dark mode toggel 
-  const [isDarkPage, setisDarkPage] = useState(localStorage.getItem('isDark'));
+  const [isDark, setIsDark] = useState(getInitialDarkMode);
 
 
   const toggleDarkMode = () => {
-    setisDarkPage((prevMode) => !prevMode);
+    setIsDark((prevMode) => !prevMode);
   };
 
-
+  useEffect(() => {
+    localStorage.setItem('isDark', isDark);
+  }, [isDark]);
 
   return (
     <div className="App">
@@ -29,12 +36,12 @@ function App() {
       <APIContext.Provider value='https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards'>
 
         <Container
-          className={`d-flex flex-column   align-items-center container
-        ${!isDarkPage ? 'bg-dark text-light' : 'bg-light'}`}
+          className={`d-flex flex-column  align-items-center container
+        ${isDark ? 'bg-dark text-light' : 'bg-light'}`}
           style={{ minHeight: '70vh' }} >
 
 
-          <NavbarComp toggleDarkMode={toggleDarkMode} />
+          <NavbarComp toggleDarkMode={toggleDarkMode} isDark={isDark} />
 
 
         </Container >

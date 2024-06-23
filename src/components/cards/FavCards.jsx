@@ -9,7 +9,7 @@ import { jwtDecode } from "jwt-decode";
 
 
 
-const FavCards = ({ isDark }) => {
+const FavCards = () => {
     const UI_STATE = {
         NONE: 'NONE',
         READ: 'READ',
@@ -100,7 +100,6 @@ const FavCards = ({ isDark }) => {
                         {cards.map(card => (
 
                             <Card style={{ width: '18rem' }} key={card._id} className={isHovered && hoveredCard._id === card._id ? 'hoveredCard' : 'unHoveredCard'}
-                                data-bs-theme={!isDark && 'dark'}
                                 onMouseLeave={() => setIsHovered(false)}
                                 onMouseEnter={() => handelHovered(card)}
                                 onClick={() => { handelView(card) }}

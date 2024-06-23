@@ -9,7 +9,7 @@ import CardView from './CardView';
 import CardEdit from './CardEdit';
 
 
-const MyCards = ({ isDark }) => {
+const MyCards = () => {
     const UI_STATE = {
         NONE: 'NONE',
         CREATE: 'CREATE',
@@ -142,7 +142,6 @@ const MyCards = ({ isDark }) => {
                         {cards.map(card => (
 
                             <Card style={{ width: '18rem' }} key={card._id} className={isHovered && hoveredCard._id === card._id ? 'hoveredCard' : 'unHoveredCard'}
-                                data-bs-theme={!isDark && 'dark'}
                                 onMouseLeave={() => { setIsHovered(false); setLikeIconClick(false); }}
                                 onMouseEnter={() => handelHovered(card)}
                                 onClick={() => { handelView(card) }}

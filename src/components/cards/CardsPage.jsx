@@ -6,7 +6,7 @@ import APIContext from '../../contexts/APIContext';
 import '../style/CardsPage.css';
 
 
-const CardsPage = ({ isDark }) => {
+const CardsPage = () => {
     const UI_STATE = {
         NONE: 'NONE',
         CREATE: 'CREATE',
@@ -71,7 +71,7 @@ const CardsPage = ({ isDark }) => {
                             {
                                 cards.slice(0, 12).map(card => (
 
-                                    <Card style={{ width: '18rem' }} key={card._id} data-bs-theme={!isDark && 'dark'} onMouseLeave={() => setIsHovered(false)}
+                                    <Card style={{ width: '18rem' }} key={card._id} onMouseLeave={() => setIsHovered(false)}
                                         onMouseEnter={() => handelHovered(card)}
                                         onClick={() => {
                                             handelView(card);

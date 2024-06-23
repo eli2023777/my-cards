@@ -9,7 +9,7 @@ const LogIn = ({ callback }) => {
     const [user, setUser] = useState(new User());
     const [errors, setErrors] = useState(null);
     const [APIError, setAPIError] = useState(false);
-
+    const [message, setMesssage] = useState('');
     const [isLogin, setIsLogin] = useState(false);
     const navigate = useNavigate();
 
@@ -25,7 +25,9 @@ const LogIn = ({ callback }) => {
         currUser.updateField(e.target.name, e.target.value);
         setUser(currUser);
         if (validateUser())
-            onLogin();
+            setMesssage('You have logged in successfully!');
+
+        onLogin();
     };
 
     const onLogin = async () => {
@@ -68,9 +70,10 @@ const LogIn = ({ callback }) => {
         return formIsValid;
     };
 
+
     useEffect(() => {
         if (errors)
-            console.log('Errors:', errors);
+            setErrors(errors);
     }, [errors]);
 
     useEffect(() => {
@@ -114,6 +117,7 @@ const LogIn = ({ callback }) => {
                 <div style={{ color: 'red' }}>Email or password is incorrect. Please try again.</div>
             }
 
+            <div style={{ color: 'green' }}>{message}</div>
 
             <br />
             <br />

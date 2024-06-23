@@ -12,6 +12,7 @@ const SignUp = () => {
     const [isSignUp, setIsSignUp] = useState(false);
     const navigate = useNavigate();
     const [message, setMesssage] = useState('');
+    const [isSuccess, setIsSuccess] = useState(false);
     const [errors, setErrors] = useState({}); // errors is a JS object, with the key = field name, and value = error message
 
 
@@ -33,11 +34,13 @@ const SignUp = () => {
             setErrors({});
 
             // 2. Success
-            setMesssage('You have successfully registered');
+            setMesssage('You have registered successfully!');
+            setIsSuccess(true);
             onSignUp();
         } else {
             // 3. Fail
-            setMesssage('Invalid form values');
+            setMesssage('Invalid form values. Please try again.');
+            setIsSuccess(false);
             setErrors(lclErrors)
         }
     };
@@ -75,7 +78,7 @@ const SignUp = () => {
 
     useEffect(() => {
         if (errors)
-            console.log('Errors:', errors);
+            setErrors(errors);
     }, [errors]);
 
     useEffect(() => {
@@ -188,10 +191,10 @@ const SignUp = () => {
                     Submit
                 </Button>
 
-                <div>{message}</div>
-
             </Form>
             <br />
+            <div style={{ color: isSuccess ? 'green' : 'red' }}>{message}</div>
+
             <br />
             <br />
             <br />
