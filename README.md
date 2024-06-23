@@ -69,10 +69,6 @@ Welcome to the Responsive Business Cards App built with React! This application 
 
 We welcome contributions! Feel free to open Issues and submit Pull Requests with suggestions for improvements and bug fixes.
 
-## License
-
-This project is licensed under the MIT License. For more details, refer to the [LICENSE](LICENSE) file.
-
 ## Credits
 
 This application was inspired by similar projects and built using various open-source technologies. Thanks to all the developer communities!
