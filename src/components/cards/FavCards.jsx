@@ -15,8 +15,8 @@ const FavCards = () => {
         READ: 'READ',
     }
 
-
     const [cards, setCards] = useState([]);
+    const [cardForDelete, setCardForDelete] = useState({});
     const [selectedCard, setSelectedCard] = useState(null);
     const [uiState, setUIState] = useState(UI_STATE.NONE);
 
@@ -51,14 +51,16 @@ const FavCards = () => {
     };
 
     const handelDelete = (card) => {
-        callAPI(API, METHOD.LIKE_UNLIKE, card._id);
+        setCards(cards.filter(c => c._id !== card._id));
         setIsDelete(true);
+        setCardForDelete(card);
+        localStorage.removeItem(card._id);
     };
 
     useEffect(() => {
         if (isDelete)
-            cards = cards.filter(c => c._id !== cards._id);
-    }, [isDelete]);
+            callAPI(API, METHOD.LIKE_UNLIKE, cardForDelete._id);
+    }, [isDelete, cardForDelete]);
 
     useEffect(() => {
         if (API)
@@ -66,14 +68,13 @@ const FavCards = () => {
     }, [API]);
 
     useEffect(() => {
-        if (data) {
+        if (Array.isArray(data)) {
             let favCards = data.filter(c => c.likes.find(l => l === userID));
-            console.log(userID);
             setCards(favCards);
+        } else {
+            console.error("Data is not an array:", data);
         }
     }, [data]);
-
-
 
 
     if (isLoading) return <div>Loading...</div>
@@ -122,7 +123,11 @@ const FavCards = () => {
                                     {isHovered && hoveredCard._id === card._id && (
                                         <div>
 
-                                            <Button variant="primary" onClick={() => handelDelete(card)}>Delete Card from Favorites</Button>
+                                            <Button variant="primary" onClick={(e) => {
+                                                e.stopPropagation();
+                                                handelDelete(card);
+                                            }
+                                            }>Delete Card from Favorites</Button>
                                             &nbsp;
 
                                         </div>

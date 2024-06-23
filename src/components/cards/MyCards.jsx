@@ -33,16 +33,27 @@ const MyCards = () => {
     const [likeIconHovered, setLikeIconHovered] = useState(false);
     const [idForAPILike, setIdForAPILike] = useState('');
 
+
     const handelLikeClick = (id) => {
-        // Like 
-        if (!likeIconClick) {
-            setLikeIconClick(true);
-        } else { // UNLIKE
-            setLikeIconClick(false);
-            setLikeIconHovered(false);
-        }
+        const newLikeState = !likeIconClick[id];
+        setLikeIconClick(prevState => ({
+            ...prevState,
+            [id]: newLikeState
+        }));
+        localStorage.setItem(id, JSON.stringify(newLikeState));
         setIdForAPILike(id);
     }
+
+    useEffect(() => {
+        const storedLikes = {};
+        cards.forEach(card => {
+            const isLiked = JSON.parse(localStorage.getItem(card._id));
+            if (isLiked !== null) {
+                storedLikes[card._id] = isLiked;
+            }
+        });
+        setLikeIconClick(storedLikes);
+    }, [cards]);
 
     // For CREATE
     const addToList = (newCard) => {
@@ -79,9 +90,12 @@ const MyCards = () => {
     };
 
     const handelDelete = (card) => {
-        setCards(cards.filter(c => c._id !== card._id));
-        setIsDelete(true);
-        setCardForDelete(card);
+        const userConfirmed = window.confirm(`Are you sure you want to delete this card? You will not be able to restore after confirmation.`);
+        if (userConfirmed) {
+            setCards(cards.filter(c => c._id !== card._id));
+            setIsDelete(true);
+            setCardForDelete(card);
+        }
     };
 
     useEffect(() => {
@@ -104,9 +118,11 @@ const MyCards = () => {
     useEffect(() => {
         if (idForAPILike !== '') {
             callAPI(API, METHOD.LIKE_UNLIKE, idForAPILike);
-            localStorage.setItem(idForAPILike, likeIconClick);
+            // localStorage.setItem(idForAPILike, JSON.stringify(likeIconClick));
         }
-    }, [likeIconClick, idForAPILike]);
+    }, [
+        // likeIconClick, 
+        idForAPILike]);
 
 
     if (isLoading) return <div>Loading...</div>
