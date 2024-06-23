@@ -85,7 +85,6 @@ const CardsPage = ({ isDark }) => {
                                                 {card.description}
                                             </Card.Text>
                                             <div style={{ width: '100%', height: '1px', background: '#006d318b' }}></div>
-                                            {/* <div style={{ width: '100%', height: '2px', background: '#360a8e67' }}></div> */}
                                             <br />
                                             {card.phone}
                                             <br />

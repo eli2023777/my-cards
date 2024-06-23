@@ -183,10 +183,6 @@ const SignUp = () => {
                     <Form.Control type="number" name="zip" placeholder="Zip Code" onChange={handelChange} />
                     <div style={{ color: 'red' }}>{errors && errors['zip']}</div>
                 </Form.Group>
-                {/* 
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group> */}
 
                 <Button variant="primary" type="submit" style={{ height: '50%', marginBottom: '2px' }}>
                     Submit

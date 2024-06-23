@@ -104,9 +104,6 @@ const LogIn = ({ callback }) => {
                     <div style={{ color: 'red' }}>{errors && errors['password']}</div>
                 </Form.Group>
 
-                {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group> */}
             </Form>
 
             <Button variant="primary" form='logInForm' type="submit" style={{ width: '100%' }} >
