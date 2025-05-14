@@ -90,7 +90,8 @@ const MyCards = () => {
     };
 
     const handelDelete = (card) => {
-        const userConfirmed = window.confirm(`Are you sure you want to delete this card? You will not be able to restore after confirmation.`);
+        const userConfirmed = window.confirm(`Are you sure you want to delete this card?
+             You will not be able to restore after confirmation.`);
         if (userConfirmed) {
             setCards(cards.filter(c => c._id !== card._id));
             setIsDelete(true);

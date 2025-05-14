@@ -71,7 +71,8 @@ const CardsPage = () => {
                             {
                                 cards.slice(0, 12).map(card => (
 
-                                    <Card style={{ width: '18rem' }} key={card._id} onMouseLeave={() => setIsHovered(false)}
+                                    <Card style={{ width: '18rem' }} key={card._id}
+                                        onMouseLeave={() => setIsHovered(false)}
                                         onMouseEnter={() => handelHovered(card)}
                                         onClick={() => {
                                             handelView(card);
@@ -80,11 +81,18 @@ const CardsPage = () => {
 
                                         <Card.Img className='imgCard' variant="top" src={card.image.url} alt={card.image.alt} />
                                         <Card.Body className='bodyCard'>
-                                            <Card.Title style={{ fontSize: '30px' }}>{card.title}</Card.Title>
+                                            <Card.Title style={{ fontSize: '30px' }}>
+                                                {card.title}
+                                            </Card.Title>
                                             <Card.Text >
                                                 {card.description}
                                             </Card.Text>
-                                            <div style={{ width: '100%', height: '1px', background: '#006d318b' }}></div>
+                                            <div style={{
+                                                width: '100%', height: '1px',
+                                                background: '#006d318b'
+                                            }}>
+
+                                            </div>
                                             <br />
                                             {card.phone}
                                             <br />

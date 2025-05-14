@@ -161,8 +161,8 @@ const NavbarComp = ({ toggleDarkMode, isDark }) => {
 
     if (isLoading) return <div>Loading...</div>
 
-    const basename = process.env.REACT_APP_BASENAME;
-
+    // const basename = process.env.REACT_APP_BASENAME;
+    const basename = '/';
 
     return (
         <div>

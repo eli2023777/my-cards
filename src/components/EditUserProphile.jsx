@@ -91,7 +91,8 @@ const EditUserProphile = () => {
 
     const getUserDetails = async () => {
         try {
-            const res = await axios.get(`https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${userID}`,
+            const res = await axios.get(
+                `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users/${userID}`,
                 {
                     headers: {
                         'x-auth-token': token
@@ -113,6 +114,7 @@ const EditUserProphile = () => {
     // GET-ONE MODE
     useEffect(() => {
         if (data) {
+            // Make sure the objects are not null, before loading the keys
             if (data.name && data.image && data.address) {
                 const newUser = new FullUserForUpdate(data._id, data.name.first, data.name.last, data.phone, data.image.url, data.image.alt, data.address.state, data.address.country, data.address.city, data.address.street, data.address.houseNumber, data.address.zip);
                 setUser(newUser);
